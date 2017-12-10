@@ -10,7 +10,7 @@ import java.util.List;
 
 @SuppressWarnings("unchecked")
 public class Sudoku {
-	
+
 	public static String readFile(String path, Charset encoding) throws IOException {
 		byte[] encoded = Files.readAllBytes(Paths.get(path));
 		return new String(encoded, encoding);
@@ -94,7 +94,7 @@ public class Sudoku {
 		}
 	}
 
-	public static Integer[][] getSmallsudokuTable(Integer[][] sudokuTable, int indexLine, int indexColumn) {
+	public static Integer[][] getSmallSudokuTable(Integer[][] sudokuTable, int indexLine, int indexColumn) {
 		Integer[][] currentSmallSudoku = new Integer[3][3];
 		int tableLinePosition = indexLine / 3;
 		int tableColumnPosition = indexColumn / 3;
@@ -145,7 +145,7 @@ public class Sudoku {
 
 		existLineHorizontal = lineContainsNumber(getHorizontalLine(sudokuTable, indexLine, indexColumn), numberToCheck);
 		existLineVertical = lineContainsNumber(getVerticalLine(sudokuTable, indexLine, indexColumn), numberToCheck);
-		existTable = tableContainsNumber(getSmallsudokuTable(sudokuTable, indexLine, indexColumn), numberToCheck);
+		existTable = tableContainsNumber(getSmallSudokuTable(sudokuTable, indexLine, indexColumn), numberToCheck);
 
 		if (existLineHorizontal || existLineVertical || existTable) {
 			exist = true;
@@ -243,8 +243,8 @@ public class Sudoku {
 		}
 		return numbersUsed;
 	}
-	
-	public static Integer[][] resolveSudoku(Integer[][] sudokuTable, List<Integer>[][] numbersUsed) throws IOException{
+
+	public static Integer[][] resolveSudoku(Integer[][] sudokuTable, List<Integer>[][] numbersUsed) throws IOException {
 		for (int i = 0; i < sudokuTable.length; i++) {
 			for (int j = 0; j < sudokuTable[i].length; j++) {
 				if (initSudoku()[i][j] != null) {
@@ -273,7 +273,7 @@ public class Sudoku {
 		}
 		return sudokuTable;
 	}
-	
+
 	public static void main(String[] args) throws IOException {
 		long startTime = System.currentTimeMillis();
 		long endTime;
@@ -282,13 +282,13 @@ public class Sudoku {
 
 		System.out.println("\n----before-----");
 		showTable(sudokuTable);
-		
+
 		resolveSudoku(sudokuTable, numbersUsed);
-		
+
 		System.out.println("\n----after-----");
 		showTable(sudokuTable);
 
 		endTime = System.currentTimeMillis();
-		System.out.println("That took " + (endTime - startTime) + " milliseconds");
+		System.out.println("That tooks " + (endTime - startTime) + " milliseconds");
 	}
 }
