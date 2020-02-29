@@ -178,9 +178,6 @@ public class Sudoku {
 				if (numbersUsed[i][j].size() == 0) {
 					continue;
 				}
-				// if (initSudoku()[i][j] != null) {
-				// continue;
-				// }
 				Integer possibleNumber = returnPossibleNumber(sudokuTable, i, j, numbersUsed);
 				if (possibleNumber != null) {
 					positionAndNewValue[0] = i;
